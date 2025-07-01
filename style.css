@@ -1,0 +1,29 @@
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 900px;
+}
+
+.box {
+    width: 56.25px;
+    height: 56.25px;
+    border: 1px solid black;
+}
+
+.box:hover {
+    background-color: black;
+}
+
