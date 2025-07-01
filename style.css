@@ -2,15 +2,33 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
     box-sizing: border-box;
     padding: 0;
-    border: 0;
+    border:  0;
 }
 
 body {
     display:flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(133, 212, 238);
+    color: white;
 }
 
+#title {
+    font-weight: 900px;
+    font-size: 3rem;
+}
+
+#add-btn {
+    font-size: 2rem;
+    padding: 5px 25px;
+    margin-bottom: 40px;
+    color: rgb(133, 212, 238);
+    border-radius: 10px;
+}
+
+#add-btn:hover {
+    cursor: pointer;
+}
 .grid-container {
     display: flex;
     flex-wrap: wrap;
@@ -20,7 +38,7 @@ body {
 .box {
     width: calc(34px + 16px);
     height: calc(34px + 16px);
-    border: 1px solid black;
+    border: 1px solid whitesmoke;
 }
 
 
