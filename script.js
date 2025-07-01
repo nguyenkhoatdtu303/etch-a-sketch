@@ -1,26 +1,34 @@
-let boxes = document.querySelectorAll('.box');
 let body = document.querySelector('body');
 const hexaCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
 const button = document.querySelector('button');
 
 
 button.addEventListener('click', () => {
+    
+    // the limit is 100 so force the user to enter the valid row
     let row = 16;
     do {
         row = parseInt(prompt("Enter rows: "));
     } while (row > 100);
 
+    // remove the current grid so that we can add a new grid at this position
     let container = document.querySelector('.grid-container');
     container.remove();
+
+
     generateGrid(row);
+    boxes = document.querySelectorAll('.box');
 
-})
+    changeColor();
+});
 
-boxes.forEach(box => {
-    box.addEventListener('mouseenter', () => {
-        box.style.backgroundColor = getColor();
-    })
-})
+function changeColor(boxes = document.querySelectorAll('.box')) {
+    boxes.forEach(box => {
+        box.addEventListener('mouseenter', () => {
+            box.style.backgroundColor = getColor();
+        });
+    });
+}
 
 function generateGrid(row) {
     let container = document.createElement('div');
@@ -52,3 +60,5 @@ function getColor() {
 
     return colorCode;
 }
+
+changeColor();
