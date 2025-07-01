@@ -1,4 +1,3 @@
-let body = document.querySelector('body');
 // hexaCode to be used generate color hexa code
 const hexaCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
 const button = document.querySelector('button');
@@ -12,48 +11,38 @@ button.addEventListener('click', () => {
         row = parseInt(prompt("Enter rows: "));
     } while (row > 100);
 
-    // remove the current grid so that we can add a new grid at this position
-    let container = document.querySelector('.grid-container');
-    container.remove();
+    // remove all the grid so that we can have an empty container for new grids
+    deleteGrid();
 
     generateGrid(row);
-
-    // call this function for the new grid
-    changeColor();
 });
-
-// assign the boxes in parameters so that we can invoke in a new grid
-// which has different size
-function changeColor(boxes = document.querySelectorAll('.box')) {
-    boxes.forEach(box => {
-        box.addEventListener('mouseenter', () => {
-            box.style.backgroundColor = getColor();
-        });
-    });
-}
-// recall this function for the defaut grid
-changeColor();
-
 
 function generateGrid(row) {
     // create a new container because we will use it to replace the old one
-    let container = document.createElement('div');
-    container.className = 'grid-container';
+    let gridContainer = document.querySelector('.grid-container');
 
     // change the size of each div so that use all the space available in container
     let size = 800 / row;
 
     // row * row because we have to add div in 2 dimensions
     for (let i = 0; i < row*row; i++) {
-        let div = document.createElement('div');
-        div.classList.add('box');
-        div.style.cssText = `width: ${size}px; height: ${size}px;`;
+        let box = document.createElement('div');
+        box.classList.add('box');
+        box.style.cssText = `width: ${size}px; height: ${size}px;`;
 
-        container.appendChild(div);
+        gridContainer.appendChild(box);
+
+        box.addEventListener('mouseenter', () => {
+            box.style.backgroundColor = getColor();
+        });
     }
+}
 
-    // append the new container at the position of the old one
-    body.appendChild(container);
+function deleteGrid() {
+    // get a node list of grids of the container
+    // so that we can delete all the grids
+    const boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.remove());
 }
 
 function getRandomIndex() {
@@ -72,3 +61,5 @@ function getColor() {
 
     return colorCode;
 }
+
+generateGrid(16);
