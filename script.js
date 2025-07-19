@@ -9,7 +9,7 @@ button.addEventListener('click', () => {
     let row = 16;
     do {
         row = parseInt(prompt("Enter rows: "));
-    } while (row > 100);
+    } while (row < 0 || row > 100);
 
     // remove all the grid so that we can have an empty container for new grids
     deleteGrid();
