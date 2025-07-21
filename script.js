@@ -22,6 +22,7 @@ function generateGrid(row) {
     let gridContainer = document.querySelector('.grid-container');
 
     // change the size of each div so that use all the space available in container
+    let containerWidth = gridContainer.style.getPropertyValue('width');
     let size = 800 / row;
 
     // row * row because we have to add div in 2 dimensions
