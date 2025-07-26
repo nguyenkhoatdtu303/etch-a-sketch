@@ -1,21 +1,17 @@
 // hexaCode to be used generate color hexa code
 const hexaCode = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
-const button = document.querySelector('button');
+const range = document.querySelector('#quantity');
+const output = document.querySelector('#output-quantity');
 
-
-button.addEventListener('click', () => {
-    
-    // the limit is 100 so force the user to enter the valid row
-    let row = 16;
-    do {
-        row = parseInt(prompt("Enter rows: "));
-    } while (row < 0 || row > 100);
-
-    // remove all the grid so that we can have an empty container for new grids
+output.textContent = range.value;
+range.addEventListener('input', () => {
     deleteGrid();
+    let quantity = range.value;
 
-    generateGrid(row);
-});
+    output.textContent = quantity;
+    generateGrid(quantity);
+})
+
 
 function generateGrid(row) {
     // create a new container because we will use it to replace the old one
